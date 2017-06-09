@@ -4,15 +4,15 @@ import Vue from 'vue'
 import App from './App'
 import router from './router'
 // process.env.NODE_ENV === 'development'
-// import vueScrollBehavior from '../src/vue-scroll-behavior.js'
+// import <%= camelCaseName %> from '../src/<%= name %>.js'
 
 // process.env.NODE_ENV === 'production'
-import vueScrollBehavior from '../dist/vue-scroll-behavior.js'
+import <%= camelCaseName %> from '../dist/<%= name %>.js'
 
 Vue.config.productionTip = false
 
 // Using plugin
-Vue.use(vueScrollBehavior)
+Vue.use(<%= camelCaseName %>)
 
 /* eslint-disable no-new */
 new Vue({

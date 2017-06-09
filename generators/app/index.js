@@ -23,7 +23,7 @@ module.exports = class extends Generator {
         type: 'input',
         name: 'description',
         message: 'Description',
-        default: ''
+        default: 'A vue.js plugin'
       },
       {
         type: 'input',
@@ -72,8 +72,8 @@ module.exports = class extends Generator {
   default() {
     if (path.basename(this.destinationPath()) !== this.props.name) {
       this.log(
-        'Your generator must be inside a folder named ' + this.props.name + '\n' +
-        'I\'ll automatically create this folder.'
+        '\nYour generator must be inside a folder named ' + this.props.name + '\n' +
+        'I\'ll automatically create this folder.\n'
       );
       mkdirp(this.props.name);
       this.destinationRoot(this.destinationPath(this.props.name));
@@ -98,13 +98,18 @@ module.exports = class extends Generator {
   }
 
   writing() {
-    this.log(this.props);
+    this.log('Writing...');
 
     this._writingPackageJSON();
     this._writingREADME();
     this._writingBabelrc();
     this._writingGitignore();
     this._writingSrc();
+    this._writingDemo();
+    this._writingBuild();
+    this._writingConfig();
+    this._writingDist();
+    this._writingSeed();
   }
 
   _writingPackageJSON() {
@@ -153,7 +158,7 @@ module.exports = class extends Generator {
 
   _writingSrc() {
     this.fs.copyTpl(
-      this.templatePath('src/index.js'),
+      this.templatePath('src/_index.js'),
       this.destinationPath('src/' + this.props.name + '.js'),
       {
         name: this.props.name,
@@ -162,6 +167,58 @@ module.exports = class extends Generator {
         camelCaseName: this._getCamelCaseName(this.props.name),
         year: new Date().getFullYear()
       }
+    );
+  }
+
+  _writingDemo() {
+
+    mkdirp('demo/static');
+
+    this.fs.copyTpl(
+      this.templatePath('demo/_main.js'),
+      this.destinationPath('demo/main.js'),
+      {
+        name: this.props.name,
+        camelCaseName: this._getCamelCaseName(this.props.name)
+      }
+    );
+
+    this.fs.copyTpl(
+      this.templatePath('demo/assets/_logo.png'),
+      this.destinationPath('demo/assets/logo.png')
+    );
+  }
+
+  _writingBuild() {
+    this.fs.copyTpl(
+      this.templatePath('build/_build.rollup.js'),
+      this.destinationPath('build/build.rollup.js'),
+      {
+        name: this.props.name,
+        camelCaseName: this._getCamelCaseName(this.props.name)
+      }
+    );
+  }
+
+  _writingConfig() {
+    this.fs.copyTpl(
+      this.templatePath('config/**'),
+      this.destinationPath('config/')
+    );
+  }
+
+  _writingDist() {
+    mkdirp('dist');
+  }
+
+  _writingSeed() {
+    this.fs.copyTpl(
+      this.templatePath('build/seed/**'),
+      this.destinationPath('build/')
+    );
+    this.fs.copyTpl(
+      this.templatePath('demo/seed/**'),
+      this.destinationPath('demo/')
     );
   }
 

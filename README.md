@@ -1,5 +1,5 @@
 # generator-vue-plugin [![NPM version][npm-image]][npm-url] [![Build Status][travis-image]][travis-url] [![Dependency Status][daviddm-image]][daviddm-url]
-> Yeoman generator generating vue plugin
+> Yeoman generator generating vue plugin :rocket:
 
 <br>
 <p align="center">

@@ -1,7 +1,11 @@
 # generator-vue-plugin [![NPM version][npm-image]][npm-url] [![Build Status][travis-image]][travis-url] [![Dependency Status][daviddm-image]][daviddm-url]
 > Yeoman generator generating vue plugin
 
-![](screenshot.gif)
+<br>
+<p align="center">
+  <img src="https://raw.githubusercontent.com/jeneser/generator-vue-plugin/master/screenshot.gif" />
+</p>
+<br>
 
 ## Features
 

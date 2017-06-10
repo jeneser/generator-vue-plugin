@@ -29,7 +29,7 @@ module.exports = class extends Generator {
         type: 'input',
         name: 'keywords',
         message: 'Package keywords (comma to split)',
-        default: ''
+        default: 'vue.js,vue-plugin'
       },
       {
         type: 'input',
@@ -183,7 +183,7 @@ module.exports = class extends Generator {
       }
     );
 
-    this.fs.copyTpl(
+    this.fs.copy(
       this.templatePath('demo/assets/_logo.png'),
       this.destinationPath('demo/assets/logo.png')
     );
@@ -223,6 +223,7 @@ module.exports = class extends Generator {
   }
 
   install() {
+    this.log('Install deps...');
     this.installDependencies({bower: false});
   }
 };

@@ -3,11 +3,10 @@
 import Vue from 'vue'
 import App from './App'
 import router from './router'
-// process.env.NODE_ENV === 'development'
-// import <%= camelCaseName %> from '../src/<%= name %>.js'
 
-// process.env.NODE_ENV === 'production'
-import <%= camelCaseName %> from '../dist/<%= name %>.js'
+const <%= camelCaseName %> = process.env.NODE_ENV === 'development'
+  ? require('../src/<%= name %>.js')
+  : require('../dist/<%= name %>.js')
 
 Vue.config.productionTip = false
 

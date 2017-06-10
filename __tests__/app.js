@@ -9,9 +9,6 @@ describe('generator-vue-plugin:app', () => {
       .withPrompts({name: 'vue-plugin'});
   });
 
-  it('creates files', () => {
-    assert.file([
-      '_package.json'
-    ]);
-  });
+  it('Start test');
+
 });

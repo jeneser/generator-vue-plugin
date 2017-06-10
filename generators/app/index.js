@@ -98,7 +98,7 @@ module.exports = class extends Generator {
   }
 
   writing() {
-    this.log('Writing...');
+    this.log('\nWriting...\n');
 
     this._writingPackageJSON();
     this._writingREADME();
@@ -223,7 +223,7 @@ module.exports = class extends Generator {
   }
 
   install() {
-    this.log('Install deps...');
+    this.log('\nInstall deps...\n');
     this.installDependencies({bower: false});
   }
 };
